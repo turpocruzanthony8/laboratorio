@@ -628,9 +628,182 @@ ef loteria():
     print("Lista final con la boliyapa:", numeros)
 
 loteria()
-
 def abecedario_modificado():
     abecedario = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+    # Eliminar las letras en posiciones múltiplos de 3 (considerando índice 0)
+    abecedario = [letra for i, letra in enumerate(abecedario) if (i + 1) % 3 != 0]
+
+    print("Lista resultante del abecedario:", abecedario)
+
+abecedario_modificado()
+
+lista = []
+contador = 0
+while(contador <7):
+bolo = int(input("Ingrese el bolo ganador: "))
+if bolo in lista:
+print("Este bolo ya ha salido, no se contará")
+
+else:
+lista.append(bolo)
+contador+=1
+
+for i in lista:
+
+print(i)
+
+lista = []
+for i in range (5):
+país = input("Escriba el nombre del país: ")
+goles = int(input("Cuántos goles hizo: "))
+tupla = (país, goles)
+lista.append(tupla)
+for i in lista:
+print("El país: {} hizo {} goles".format(i[0], i[1]))
+for x in range(len(paises)):
+print(paises[x][0],paises[x][1])
+
+def meses_del_ano():
+    meses = ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+
+    while True:
+        numero = int(input("Introduce un número (1-12) para ver el mes correspondiente o 0 para salir: "))
+
+        if numero == 0:
+            print("Programa terminado.")
+            break
+        elif 1 <= numero <= len(meses):
+            print(f"El mes correspondiente al número {numero} es {meses[numero - 1]}")
+        else:
+            print("Error: El número debe estar entre 1 y 12.")
+
+meses_del_ano()
+
+def contar_repeticiones():
+    numeros = (1, 2, 3, 2, 4, 5, 2, 6, 7, 8, 2)
+    numero = int(input("Introduce un número para saber cuántas veces se repite: "))
+
+    repeticiones = numeros.count(numero)
+
+    if repeticiones > 0:
+        print(f"El número {numero} se repite {repeticiones} veces.")
+    else:
+        print(f"El número {numero} no se encuentra en la tupla.")
+
+contar_repeticiones()
+
+def max_min_tupla():
+    numeros = (15, 42, 9, 8, 35, 1, 78, 50)
+
+    max_num = max(numeros)
+    min_num = min(numeros)
+
+    print(f"El número mayor en la tupla es: {max_num}")
+    print(f"El número menor en la tupla es: {min_num}")
+
+max_min_tupla()
+
+
+def mostrar_valores_por_indice():
+    numeros = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    indice = int(input("Introduce un índice (0-9) para mostrar el valor correspondiente: "))
+
+    if 0 <= indice < len(numeros):
+        print(f"El valor en el índice {indice} es {numeros[indice]}")
+    else:
+        print("Error: El índice debe estar entre 0 y 9.")
+
+mostrar_valores_por_indice()
+
+def cargar_votos():
+    candidatos = []
+
+    for i in range(3):
+        # Cargar el nombre del candidato
+        nombre_candidato = input(f"Introduce el nombre del candidato {i+1}: ")
+
+        provincias_y_votos = []
+        for j in range(3):
+            # Cargar las provincias y los votos
+            provincia = input(f"Introduce el nombre de la provincia {j+1} para {nombre_candidato}: ")
+            votos = int(input(f"Introduce la cantidad de votos obtenidos en {provincia}: "))
+            provincias_y_votos.append((provincia, votos))  # Agregar la provincia y los votos como tupla
+
+        candidatos.append([nombre_candidato, provincias_y_votos])  # Guardar los datos del candidato
+
+    # Imprimir los resultados
+    for candidato in candidatos:
+        nombre_candidato = candidato[0]
+        provincias_y_votos = candidato[1]
+
+        # Calcular la cantidad total de votos
+        total_votos = sum(voto for provincia, voto in provincias_y_votos)
+
+        print(f"\nCandidato: {nombre_candidato}")
+        print("Votos por provincia:")
+        for provincia, votos in provincias_y_votos:
+            print(f"  {provincia}: {votos} votos")
+        print(f"Total de votos obtenidos: {total_votos} votos")
+
+# Ejecutar la función para cargar los votos
+cargar_votos()
+
+from cmath import pi
+
+def areaCírculo(radio):
+return pi*pow(radio,2)
+
+print("con radio 5: {}".format(areaCírculo(5)) )
+print("con radio 4: {}".format(areaCírculo(4)) )
+print("con radio 3: {}".format(areaCírculo(3)) )
+
+def soles_a_dolares(soles):
+    tipo_cambio = 3.8
+    dolares = soles / tipo_cambio
+    return dolares
+def soles_a_euros(soles):
+    tipo_cambio = 4.5
+    euros = soles / tipo_cambio
+    return euros
+ef cambiar_moneda():
+    moneda = input("¿Quieres cambiar soles a dólares o a euros? (escribe 'dólares' o 'euros'): ").lower()
+
+    if moneda == "dólares":
+        soles = float(input("Introduce el valor en soles: "))
+        print(f"{soles} soles son {soles_a_dolares(soles):.2f} dólares.")
+    elif moneda == "euros":
+        soles = float(input("Introduce el valor en soles: "))
+        print(f"{soles} soles son {soles_a_euros(soles):.2f} euros.")
+    else:
+        print("Opción no válida. Por favor escribe 'dólares' o 'euros'.")
+cambiar_moneda()
+
+def centigrados(fahrenheit):
+    centigrados = (fahrenheit - 32) * 5 / 9
+    return centigrados
+def menor(num1, num2, num3):
+    return min(num1, num2, num3)
+
+def estacionamiento(horas):
+    if horas <= 1:
+        costo = 3.00
+    else:
+        costo = 3.00 + (horas - 1) * 0.50
+    if costo > 12.00:
+        costo = 12.00
+    return costo
+def es_multiplo(num1, num2):
+    if num2 != 0 and num1 % num2 == 0:
+        return True
+    else:
+        return False
+def convertir_a_segundos(horas, minutos, segundos):
+    total_segundos = horas * 3600 + minutos * 60 + segundos
+    return total_segundos
+
+    
 
     # Eliminar las letras en posiciones múltiplos de 3 (considerando índice 0)
     abecedario = [letra for i, letra in enumerate(abecedario) if (i + 1) % 3 != 0]
